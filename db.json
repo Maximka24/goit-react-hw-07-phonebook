@@ -1,3 +1,14 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "id": "WGQ0334v1kwT",
+      "name": "Макс",
+      "number": "+1111111"
+    },
+    {
+      "id": "WGQ0v11kwT",
+      "name": "Максим",
+      "number": "+1111111"
+    }
+  ]
 }

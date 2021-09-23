@@ -15,4 +15,15 @@ const deleteContact = createAction("contact/delete");
 
 const filterContacts = createAction("contact/filter");
 
-export default { addContacts, deleteContact, filterContacts };
+const fetchContactsRequest = createAction("contacts/fetchContactsRequest");
+const fetchContactsSuccess = createAction("contacts/fetchContactsSuccess");
+const fetchContactsError = createAction("contacts/fetchContactsError");
+
+export default {
+  addContacts,
+  deleteContact,
+  filterContacts,
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
+};

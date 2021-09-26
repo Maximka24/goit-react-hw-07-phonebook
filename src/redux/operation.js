@@ -11,3 +11,14 @@ export const fetchContacts = () => async (dispatch) => {
     dispatch(actions.fetchContactsError(error));
   }
 };
+
+export const fetchAddContacts =
+  (nameContact, phoneContact) => async (dispatch) => {
+    const addContact = await fetchApi.addContacts(nameContact, phoneContact);
+    dispatch(actions.addContacts(addContact));
+  };
+
+export const fetchDeleteContacts = (id) => async (dispatch) => {
+  await fetchApi.deleteContacts(id);
+  dispatch(actions.deleteContacts(id));
+};

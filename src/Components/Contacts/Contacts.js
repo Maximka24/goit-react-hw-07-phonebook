@@ -7,14 +7,20 @@ import { useSelector, useDispatch } from "react-redux";
 
 import GetFilterContacts from "./GetFilterContacts/GetFilterContacts";
 import ContactFilterList from "./ContactFilterList/ContactFilterList";
+import selectors from "../../redux/selectors";
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const mainListContact = useSelector((state) => state.phoneBook.contacts);
+  const mainListContact = useSelector((state) =>
+    selectors.phoneBookContacts(state)
+  );
 
-  useEffect(() => {
-    dispatch(operation.fetchContacts());
-  }, [dispatch]);
+  useEffect(
+    (e) => {
+      dispatch(operation.fetchContacts());
+    },
+    [dispatch]
+  );
 
   return (
     <div className={s.Container}>

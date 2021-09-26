@@ -1,16 +1,16 @@
 import React from "react";
-// import PropTypes from "prop-types";
 
 import { useDispatch, useSelector } from "react-redux";
-import actions from "../../../redux/actions";
+import * as operation from "../../../redux/operation";
+import selectors from "../../../redux/selectors";
 
 import s from "./ContactFilterList.module.css";
 
-export default function ContactFilterList(/*{ mainListContact, onDeleteContact }*/) {
+export default function ContactFilterList() {
   const dispatch = useDispatch();
 
   const mainListContact = useSelector((state) => {
-    const { contacts, filters } = state.phoneBook;
+    const { contacts, filters } = selectors.phoneBook(state);
     const normalazFilter = filters.toLowerCase();
 
     const filterListContacts = contacts.filter((contact) =>
@@ -30,7 +30,7 @@ export default function ContactFilterList(/*{ mainListContact, onDeleteContact }
           <button
             className={s.Btn}
             onClick={() => {
-              dispatch(actions.deleteContact(id));
+              dispatch(operation.fetchDeleteContacts(id));
             }}
           >
             Delete contact

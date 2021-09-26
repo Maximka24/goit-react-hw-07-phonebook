@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import actions from "../../redux/actions";
 
+import * as operation from "../../redux/operation";
+import selectors from "../../redux/selectors";
 import s from "./Phonebook.module.css";
 
 export default function PhoneBook() {
@@ -10,9 +11,15 @@ export default function PhoneBook() {
 
   const dispatch = useDispatch();
 
-  const filterListName = useSelector((state) => state.phoneBook.contacts);
+  const filterListName = useSelector((state) =>
+    selectors.phoneBookContacts(state)
+  );
+
   const nameContact = filterListName.some((contact) => contact.name === name);
-  const filterListNumber = useSelector((state) => state.phoneBook.contacts);
+
+  const filterListNumber = useSelector((state) =>
+    selectors.phoneBookContacts(state)
+  );
   const numberContact = filterListNumber.some(
     (contact) => contact.number === number
   );
@@ -44,7 +51,8 @@ export default function PhoneBook() {
 
     e.preventDefault();
 
-    dispatch(actions.addContacts(name, number));
+    dispatch(operation.fetchAddContacts(name, number));
+
     formReset();
   };
 

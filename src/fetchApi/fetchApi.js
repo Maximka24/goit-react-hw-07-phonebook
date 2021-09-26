@@ -7,10 +7,18 @@ export async function fetchListContacts() {
   return data;
 }
 
-export async function fetchAddContacts(name, number) {
-  return await axios.post("http://localhost:3000/contacts", {
+export async function addContacts(name, number) {
+  const { data } = await axios.post("http://localhost:3000/contacts", {
     id: shortid.generate(),
     name,
     number,
   });
+
+  return data;
+}
+
+export async function deleteContacts(id) {
+  const { data } = await axios.delete(`http://localhost:3000/contacts/${id}/`);
+
+  return data;
 }

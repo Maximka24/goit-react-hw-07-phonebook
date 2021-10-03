@@ -14,7 +14,6 @@ export default function PhoneBook() {
   const filterListName = useSelector((state) =>
     selectors.phoneBookContacts(state)
   );
-
   const nameContact = filterListName.some((contact) => contact.name === name);
 
   const filterListNumber = useSelector((state) =>
